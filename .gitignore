@@ -12,3 +12,6 @@ __pycache__/
 # 환경설정 파일
 .env
 .DS_Store
+
+.vscode/
+
