@@ -12,10 +12,13 @@ df = pyupbit.get_ohlcv(ticker="KRW-BTC",
                        count=30  # last 30 days
                        )
 
+# Name the index (date column)
+df.index.name = "Date"
+
 #%% Data Visualization
-# Create bar graph with improved styling
+# Create line graph with improved styling
 plt.figure(figsize=(15, 8))
-plt.bar(df.index, df['close'], color='skyblue', alpha=0.7)
+plt.plot(df.index, df['close'], color='skyblue', linewidth=2, marker='o')
 plt.title('Bitcoin Daily Closing Prices (Last 30 Days)', fontsize=16, pad=15)
 plt.xlabel('Date', fontsize=14)
 plt.ylabel('Price (KRW)', fontsize=14)
@@ -32,21 +35,6 @@ plt.show()
 #%% Data Export
 df.to_csv("test_btc.csv")
 print(df)
-
-#%% Market Price Overview
-target = pyupbit.get_tickers(fiat="KRW")
-prices = pyupbit.get_current_price(target)
-
-for x, y in prices.items():
-    print(x,y)
-
-#%% Order Book Analysis
-od_bk = pyupbit.get_orderbook("KRW-BTC")
-pprint.pprint(od_bk)
-
-od_1 = od_bk["orderbook_units"][0] 
-od_ask_tot = od_bk["total_ask_size"] 
-od_bid_tot = od_bk["total_bid_size"]
 
 
 # %%

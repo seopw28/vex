@@ -10,14 +10,6 @@ iris = load_iris()
 df = pd.DataFrame(data=iris.data, columns=iris.feature_names)
 df['species'] = pd.Categorical.from_codes(iris.target, iris.target_names)
 
-#%% Display basic information
-print("\nDataset Overview:")
-print(df.info())
-print("\nFirst few rows:")
-print(df.head())
-print("\nBasic statistics:")
-print(df.describe())
-
 #%% 1. Pair Plot Visualization
 plt.figure(figsize=(12, 8))
 sns.pairplot(df, hue='species', markers=["o", "s", "D"])
@@ -79,3 +71,4 @@ plt.show()
 # Print ratio statistics
 print("\nRatio Statistics:")
 print(df[['sepal_ratio', 'petal_ratio']].describe()) 
+# %%
