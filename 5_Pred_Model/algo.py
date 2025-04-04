@@ -1,15 +1,18 @@
+#%% Imports
 import pyupbit
 import pandas as pd
 import pprint
 import matplotlib.pyplot as plt
 pd.options.display.float_format = "{:.0f}".format
 
+#%% Data Collection
 # Get 30 days of daily data
 df = pyupbit.get_ohlcv(ticker="KRW-BTC", 
                        interval="day",  # daily data
                        count=30  # last 30 days
                        )
 
+#%% Data Visualization
 # Create bar graph with improved styling
 plt.figure(figsize=(15, 8))
 plt.bar(df.index, df['close'], color='skyblue', alpha=0.7)
@@ -26,19 +29,18 @@ plt.gca().yaxis.set_major_formatter(plt.FuncFormatter(lambda x, p: format(int(x)
 plt.tight_layout()
 plt.show()
 
+#%% Data Export
 df.to_csv("test_btc.csv")
 print(df)
 
-
-
+#%% Market Price Overview
 target = pyupbit.get_tickers(fiat="KRW")
 prices = pyupbit.get_current_price(target)
 
 for x, y in prices.items():
-	print(x,y)
- 
+    print(x,y)
 
-
+#%% Order Book Analysis
 od_bk = pyupbit.get_orderbook("KRW-BTC")
 pprint.pprint(od_bk)
 
@@ -46,3 +48,7 @@ od_1 = od_bk["orderbook_units"][0]
 od_ask_tot = od_bk["total_ask_size"] 
 od_bid_tot = od_bk["total_bid_size"]
 
+
+# %%
+
+# %%
