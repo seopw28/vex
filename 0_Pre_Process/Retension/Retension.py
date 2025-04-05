@@ -63,8 +63,7 @@ def generate_retention_data(num_users=1000, days=30):
     df = pd.DataFrame(retention_data)
     return df
 
-#%%
-# Function to create a retention heatmap
+#%% Function to create a retention heatmap
 def create_retention_heatmap(retention_df, title="User Retention Heatmap"):
     """
     Create a retention heatmap from retention data.
@@ -108,7 +107,7 @@ def create_retention_heatmap(retention_df, title="User Retention Heatmap"):
     
     return plt.gcf()
 
-#%%
+#%% Function to create a retention curve
 # Function to create a retention curve
 def create_retention_curve(retention_df, title="User Retention Curve"):
     """
@@ -150,28 +149,24 @@ retention_data = generate_retention_data(num_users=1000, days=30)
 retention_data.to_csv('retention_sample_data.csv', index=False)
 print("Sample data saved to 'retention_sample_data.csv'")
 
-#%%
-# Create and save the retention heatmap
+#%% Create and save the retention heatmap
 print("Creating retention heatmap...")
 heatmap_fig = create_retention_heatmap(retention_data)
 heatmap_fig.savefig('retention_heatmap.png')
 print("Retention heatmap saved to 'retention_heatmap.png'")
 
-#%%
-# Create and save the retention curve
+#%% Create and save the retention curve
 print("Creating retention curve...")
 curve_fig = create_retention_curve(retention_data)
 curve_fig.savefig('retention_curve.png')
 print("Retention curve saved to 'retention_curve.png'")
 
-#%%
-# Display summary statistics
+#%% Display summary statistics
 print("\nRetention Summary:")
 retention_by_day = retention_data.groupby('day')['returned'].mean() * 100
 print(retention_by_day.round(2))
 
-#%%
-# Main function to run the analysis
+#%% Main function to run the analysis
 def main():
     # Generate sample retention data
     print("Generating retention sample data...")
@@ -200,3 +195,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+# %%

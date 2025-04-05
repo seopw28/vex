@@ -15,7 +15,7 @@ df = pyupbit.get_ohlcv(ticker="KRW-BTC",
                        count=30  # last 30 days
                        )
 #%% Create a PDF document
-doc = SimpleDocTemplate("Bitcoin_Analysis_Report.pdf", pagesize=letter)
+doc = SimpleDocTemplate("Bitcoin_Analysis.pdf", pagesize=letter)
 styles = getSampleStyleSheet()
 story = []
 

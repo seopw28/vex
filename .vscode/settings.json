@@ -1,3 +1,12 @@
 {
-    "git.ignoreLimitWarning": true
-}
+    "git.ignoreLimitWarning": true,
+    "python.defaultInterpreterPath": "D:/vex/.venv/Scripts/python.exe",
+    "terminal.integrated.profiles.windows": {
+      "PowerShell": {
+        "path": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "args": ["-NoExit", "-Command", "& {D:/vex/.venv/Scripts/Activate.ps1}"]
+      }
+    },
+    "terminal.integrated.defaultProfile.windows": "PowerShell"
+  }
+  

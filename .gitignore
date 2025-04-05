@@ -13,5 +13,7 @@ __pycache__/
 .env
 .DS_Store
 
+# 프로젝트 폴더
 .vscode/
+vscode/
 
