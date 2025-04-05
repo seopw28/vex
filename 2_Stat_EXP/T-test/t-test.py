@@ -226,8 +226,7 @@ print(f"Required sample size for 80% power: {required_nobs:.0f}")
 ab_data.to_csv('ab_test_data.csv', index=False)
 print("\nData saved to 'ab_test_data.csv'")
 
-#%%
-# Function to perform A/B test with different parameters
+#%% Function to perform A/B test with different parameters
 def run_ab_test(n_samples=1000, effect_size=0.2, noise_level=0.5, alpha=0.05):
     """
     Run a complete A/B test analysis.
@@ -278,8 +277,7 @@ def run_ab_test(n_samples=1000, effect_size=0.2, noise_level=0.5, alpha=0.05):
     
     return results, data
 
-#%%
-# Run multiple A/B tests with different parameters
+#%% Run multiple A/B tests with different parameters
 print("Running multiple A/B tests with different parameters...")
 
 # Test scenarios
@@ -303,8 +301,7 @@ for scenario in scenarios:
 results_df = pd.DataFrame(all_results)
 display(results_df)
 
-#%%
-# Visualize the impact of sample size and effect size on power
+#%% Visualize the impact of sample size and effect size on power
 print("Visualizing the impact of sample size and effect size on power...")
 
 # Create a grid of sample sizes and effect sizes
@@ -335,8 +332,7 @@ plt.tight_layout()
 plt.savefig('power_analysis_heatmap.png')
 print("Power analysis heatmap saved to 'power_analysis_heatmap.png'")
 
-#%%
-# Main function to run the analysis
+#%% Main function to run the analysis
 def main():
     # Generate sample data
     print("Generating sample A/B test data...")
