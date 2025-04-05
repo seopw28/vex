@@ -1,11 +1,4 @@
-#%%
-import sys
-print(sys.executable)
-!jupyter kernelspec list
-
-
-
-#%%
+#%% import library
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -14,11 +7,9 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import train_test_split
 import shap
 
-# Set random seed for reproducibility
-np.random.seed(42)
+np.random.seed(42) # Set random seed for reproducibility
 
-#%%
-# Function to generate sample data for SHAP analysis
+#%% Function to generate sample data for SHAP analysis
 def generate_sample_data(n_samples=1000, n_features=10):
     """
     Generate sample data for SHAP analysis.
@@ -57,8 +48,7 @@ def generate_sample_data(n_samples=1000, n_features=10):
     
     return X, y
 
-#%%
-# Generate sample data
+#%% Generate sample data
 print("Generating sample data...")
 X, y = generate_sample_data(n_samples=1000, n_features=10)
 
@@ -68,8 +58,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 print(f"Training data shape: {X_train.shape}")
 print(f"Test data shape: {X_test.shape}")
 
-#%%
-# Train a random forest model
+#%% Train a random forest model
 print("Training random forest model...")
 model = RandomForestRegressor(n_estimators=100, random_state=42)
 model.fit(X_train, y_train)
@@ -81,14 +70,12 @@ test_score = model.score(X_test, y_test)
 print(f"R² score on training data: {train_score:.4f}")
 print(f"R² score on test data: {test_score:.4f}")
 
-#%%
-# Calculate SHAP values
+#%% Calculate SHAP values
 print("Calculating SHAP values...")
 explainer = shap.TreeExplainer(model)
 shap_values = explainer.shap_values(X_test)
 
-#%%
-# Create a summary plot of SHAP values
+#%% Create a summary plot of SHAP values
 print("Creating SHAP summary plot...")
 plt.figure(figsize=(10, 8))
 shap.summary_plot(shap_values, X_test, plot_type="bar", show=False)
@@ -97,8 +84,7 @@ plt.tight_layout()
 plt.savefig('shap_summary_bar.png')
 print("SHAP summary bar plot saved to 'shap_summary_bar.png'")
 
-#%%
-# Create a detailed SHAP summary plot
+#%% Create a detailed SHAP summary plot
 print("Creating detailed SHAP summary plot...")
 plt.figure(figsize=(12, 8))
 shap.summary_plot(shap_values, X_test, show=False)
@@ -107,8 +93,7 @@ plt.tight_layout()
 plt.savefig('shap_summary_detailed.png')
 print("SHAP summary detailed plot saved to 'shap_summary_detailed.png'")
 
-#%%
-# Create a dependence plot for the most important feature
+#%% Create a dependence plot for the most important feature
 print("Creating SHAP dependence plot...")
 # Find the most important feature
 feature_importance = np.abs(shap_values).mean(0)
@@ -128,8 +113,7 @@ plt.tight_layout()
 plt.savefig('shap_dependence_plot.png')
 print(f"SHAP dependence plot saved to 'shap_dependence_plot.png'")
 
-#%%
-# Create a force plot for a specific instance
+#%% Create a force plot for a specific instance
 print("Creating SHAP force plot...")
 # Select a random instance
 instance_idx = np.random.randint(0, len(X_test))
@@ -150,8 +134,7 @@ plt.tight_layout()
 plt.savefig('shap_force_plot.png')
 print(f"SHAP force plot saved to 'shap_force_plot.png'")
 
-#%%
-# Create a decision plot for multiple instances
+#%% Create a decision plot for multiple instances
 print("Creating SHAP decision plot...")
 # Select a few random instances
 n_instances = 5
@@ -172,16 +155,18 @@ plt.tight_layout()
 plt.savefig('shap_decision_plot.png')
 print("SHAP decision plot saved to 'shap_decision_plot.png'")
 
-#%%
-# Save SHAP values to CSV for further analysis
+#%% Save SHAP values to CSV for further analysis
 print("Saving SHAP values to CSV...")
 shap_df = pd.DataFrame(shap_values, columns=X_test.columns)
 shap_df.to_csv('shap_values.csv', index=False)
 print("SHAP values saved to 'shap_values.csv'")
 
-#%%
-# Function to analyze feature interactions
+#%% Function to analyze feature interactions
+    
 def analyze_feature_interactions(shap_values, X, top_n=3):
+    print("Analyzing feature interactions...")
+
+
     """
     Analyze feature interactions using SHAP values.
     
@@ -199,13 +184,28 @@ def analyze_feature_interactions(shap_values, X, top_n=3):
     interactions : list
         List of top feature interactions
     """
-    # Calculate interaction values
+
+    # 가장 중요한 feature 인덱스 선택
+    feature_importance = np.abs(shap_values).mean(0)
+    top_index = np.argmax(feature_importance)
+
+    # 상호작용 계산
     interaction_values = shap.approximate_interactions(
-        shap.TreeExplainer(model).expected_value,
+        top_index,
         shap_values,
         X
     )
-    
+
+    feature_names = X.columns
+    top_interactions = sorted(
+        zip(feature_names[interaction_values], interaction_values),
+        key=lambda x: x[1],
+        reverse=True
+    )[:top_n]
+
+    return top_interactions
+
+
     # Get feature names
     feature_names = X.columns
     
@@ -225,8 +225,7 @@ def analyze_feature_interactions(shap_values, X, top_n=3):
     
     return interaction_strengths[:top_n]
 
-#%%
-# Analyze feature interactions
+#%% Analyze feature interactions
 print("Analyzing feature interactions...")
 top_interactions = analyze_feature_interactions(shap_values, X_test, top_n=3)
 
@@ -234,8 +233,7 @@ print("\nTop Feature Interactions:")
 for i, interaction in enumerate(top_interactions):
     print(f"{i+1}. {interaction['feature1']} × {interaction['feature2']}: {interaction['strength']:.4f}")
 
-#%%
-# Main function to run the analysis
+#%% Main function to run the analysis
 def main():
     # Generate sample data
     print("Generating sample data...")
