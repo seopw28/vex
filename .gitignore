@@ -17,3 +17,7 @@ __pycache__/
 .vscode/
 vscode/
 
+# 프로젝트 파일
+plus_subject.txt
+
+ 
