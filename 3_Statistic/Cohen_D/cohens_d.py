@@ -412,3 +412,4 @@ print(f"2. Binary outcome (Cohen's h): {h:.4f} ({effect_size_desc_h} effect)")
 print(f"3. Statistical significance: {'Yes' if p_value < 0.05 else 'No'} (p = {p_value:.4f})")
 print(f"4. Required sample size for 80% power: {required_n} per group")
 print(f"5. Current power: {power_values[0]:.4f}") 
+# %%

@@ -438,3 +438,4 @@ pdf.chapter_body(conclusion_text)
 pdf.output('wilcoxon_rank_sum_report.pdf')
 
 print("\nPDF report generated: wilcoxon_rank_sum_report.pdf") 
+# %%

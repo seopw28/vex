@@ -363,3 +363,4 @@ pdf.chapter_body(conclusion_text)
 pdf.output('bayesian_ab_test_report.pdf')
 
 print("\nPDF report generated: bayesian_ab_test_report.pdf") 
+# %%

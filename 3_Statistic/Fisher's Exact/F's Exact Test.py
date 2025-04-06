@@ -11,6 +11,8 @@ import os
 from datetime import datetime
 warnings.filterwarnings('ignore')
 
+# %%
+
 #%% Generate sample data
 # Let's simulate a clinical trial comparing two treatments for a rare disease
 np.random.seed(42)
@@ -508,3 +510,5 @@ pdf.chapter_body(conclusion_text)
 pdf.output('fishers_exact_test_report.pdf')
 
 print("\nPDF report generated: fishers_exact_test_report.pdf")
+
+# %%

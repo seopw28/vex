@@ -79,5 +79,3 @@ story.append(table)
 doc.build(story)
 print("PDF report generated: Bitcoin_Analysis_Report.pdf")
 
-
-# %%
