@@ -14,6 +14,7 @@ df = pyupbit.get_ohlcv(ticker="KRW-BTC",
 
 # Name the index (date column)
 df.index.name = "Date"
+df.head()
 
 #%% Data Visualization
 # Create line graph with improved styling
@@ -42,7 +43,7 @@ from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
 from reportlab.lib.styles import getSampleStyleSheet
 
 # Create a PDF document
-doc = SimpleDocTemplate("Bitcoin_Analysis_Report.pdf", pagesize=letter)
+doc = SimpleDocTemplate("Bitcoin_Analysis.pdf", pagesize=letter)
 styles = getSampleStyleSheet()
 story = []
 
@@ -77,5 +78,6 @@ story.append(table)
 
 # Build the PDF
 doc.build(story)
-print("PDF report generated: Bitcoin_Analysis_Report.pdf")
+print("PDF report generated: Bitcoin_Analysis.pdf")
 
+# %%
