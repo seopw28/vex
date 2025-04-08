@@ -4,19 +4,19 @@
 
 ```mermaid
 flowchart TD
-    A[Start Data Analysis] --> B[Data Collection]
-    B --> C[Data Cleaning]
-    C --> D[Exploratory Data Analysis]
-    D --> E{Data Quality Check}
-    E -->|Issues Found| C
-    E -->|Quality OK| F[Feature Engineering]
-    F --> G[Model Selection]
-    G --> H[Model Training]
-    H --> I[Model Evaluation]
-    I --> J{Performance Acceptable?}
-    J -->|No| K[Hyperparameter Tuning]
-    K --> H
-    J -->|Yes| L[Model Deployment]
-    L --> M[Monitoring & Maintenance]
-    M --> N[End]
+    pv[Home Visitor] --> intel_pv{Invetory Seen}
+    intel_pv --> |Y| intel_imp[Inven Engage]
+    intel_imp --> Click_User[Click_User]
+    Click_User --> Conv_User[Conversion]
+
+    intel_imp --> Non_Ck[Content_Fail]
+    Non_Ck --> |Our Action| pCTR(Prediction improve)
+    
+
+    intel_pv --> |N| intel_uncare[Inven Uncare]
+    intel_uncare --> BTL[BTL_User]
+    intel_uncare --> BR[BR_User]
+    BTL --> |Our Action| Promo(Reward_Target)
+
+
 ```
