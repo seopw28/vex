@@ -69,8 +69,9 @@ employees_df.to_sql('employees', conn, if_exists='replace', index=False)
 # Query employees
 query3 = '''
 
-SELECT distinct name, department 
+SELECT department , count(distinct name) as num_employees
 FROM employees
+GROUP BY department
 
 '''
 print("\nEmployees and their departments:")
