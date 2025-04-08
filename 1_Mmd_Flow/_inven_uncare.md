@@ -1,9 +1,18 @@
 # Mermaid 다이어그램 예제
 
-## 데이터 분석 워크플로우
+## 가설: 최상단 내부광고의 현 Fill-Rate는 온당한가?
+
+* 현 60% 노출율을 갖고 있는 최상단 구좌는 적정 노출율을 갖고 있는지 검증 필요.
+  
+* pCTR 이 추론되지 않는, 즉 데이터가 별로 없는 고객의 경우, 
+  * 내부광고 노출에서 제외하는데 이를 제외하지 않을 경우에 
+  * 매출이 20% 가까이 늘어나고, CTR 이 11% 에서 7.5%로 감소한다.
+
+<br><br>
 
 ```mermaid
 flowchart TD
+
     pv[Home Visitor] --> intel_pv{Invetory Seen}
     intel_pv --> |Y| intel_imp[Inven Engage]
     intel_imp --> Click_User[Click_User]
@@ -20,3 +29,9 @@ flowchart TD
 
 
 ```
+
+* 팀 내에서는 이 CTR의 저하가, 고객경험의 파손으로 생각하고 있으나, 
+  * 이는 구좌무관심자의 분모 왜곡으로 지표가 어그러진 것.
+
+* 실제로 내부광고 X 버튼을 탑재하여 불만족도를 조사하였을 때,
+  * Fill-Rate를 상승시키는 것은 불만족도를 크게 높이지 않음.
