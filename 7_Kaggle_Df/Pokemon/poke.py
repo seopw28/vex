@@ -8,10 +8,5 @@ import os
 df = pd.read_csv('pokemon_df.csv')
 df.head()
 
-# %%
-
-# %%
-
-# %%
 
 # %%
