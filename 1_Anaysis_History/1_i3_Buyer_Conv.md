@@ -24,7 +24,7 @@ flowchart TD
     G--> m[ Category ?] --> j[Appears throughout]
     G--> r[ Sub Site ?] --> j[Appears throughout]
  
-    N[--Pyeong-Won EDA Start-- Not GMV, But Buyer Cnt.] --> O[Issue On Cheep Item?] --> P[Find Coupon For Cheep Item] --> Q[AI Coupon: i3]
+    N[--Pyeong-Won EDA Start-- Not GMV, But Buyer Cnt.] --> O[Issue On Cheap Item?] --> P[Find Coupon For Cheap Item] --> Q[AI Coupon: i3]
 
 ```
 <br><br>
