@@ -57,6 +57,7 @@ def perform_pca(X, n_components=None):
     plt.ylabel('Cumulative Explained Variance Ratio')
     
     plt.tight_layout()
+    plt.savefig('pca_variance_plot.png')  # Save the plot as a PNG file
     plt.show()
     
     return X_pca, pca

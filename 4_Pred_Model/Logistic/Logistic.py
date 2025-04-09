@@ -78,6 +78,7 @@ feature_importance = feature_importance.sort_values('Coefficient', ascending=Tru
 sns.barplot(x='Coefficient', y='Feature', data=feature_importance)
 plt.title('Feature Importance in Logistic Regression Model')
 plt.tight_layout()
+plt.savefig('feature_importance.png')  # Save the plot as a PNG file
 plt.show()
 
 #%% Make predictions
