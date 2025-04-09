@@ -64,6 +64,7 @@ Teams led by kind individuals often experience:
 - Sustained high performance
 - Stronger team cohesion
 
+## Conclusion
 
 Kindness is not weakness. 
 
