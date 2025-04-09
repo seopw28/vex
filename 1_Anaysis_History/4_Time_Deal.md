@@ -1,35 +1,31 @@
-# 홈 - 아이템 추천 개편
+# 쿠팡 - 재고창고 지면 개편
 
-## 가설: 유저가 관심있는 상품을 추천하면, 기존 높은 할인율보다 성과가 좋을 것이다.
+## 가설: 창고할인 페이지에서 고객의 할인인지를 개편할 수 있다면, 보다 많은 매출을 증대시킬 수 있지 않을까?
 
-* 조사 전 정황: 기존 영업에서 규모의 경제를 통해 높은 할일율을 보장하던 홈-지면 상품
+<br><br>
+
+* 조사 전 정황: 골드박스 유입자가 많은 가운데, 골드박스 영역 상단 마지막 탭에 있는 창고할인 페이지 성과 저조
   
-* Variant 1 : 만약 유저가 최근에 열람한 카테고리에 가중치를 주어 상품을 재정렬 하면 효과가 좋지 않을까?
-* Variant 2 : 만약 지면 최상단에 아예 최근본상품 모듈을 넣으면 효과가 좋지 않을까? 
-* Variant 3 : 현금성 상품 (문화상품권, 아웃백 쿠폰) 등의 관심유저는 무조건 적 재구매를 하지 않을까? 
+* Variant 1 : 남은 수량을 보여주는 UI
+* Variant 2 : 소진율 Bar 를 보여주는 UI
+* Variant 3 : 50% 이상 소진 되었을 때, 소진율을 보여주는 UI
 
 <br><br>
 
 ```mermaid
 flowchart TD
 
-    a[Buyer Conv. Decrease] --> b[buyer Count]
-    b --> |REV Impact ?| F[GMV Not Impact]
-    a --> C[Total UV] --> D[Kakao User] --> E[Log Issue] -->H[Impact to Buyer Log]
-
-    G[Every Data Team for 3Month - Buyer Count EDA] --> i[Channel ?] --> j[Appears throughout]
-    G--> k[ Device ?] --> j[Appears throughout]
-    G--> l[ Royalty ?] --> j[Appears throughout]
-    G--> m[ Category ?] --> j[Appears throughout]
-    G--> r[ Sub Site ?] --> j[Appears throughout]
- 
-    N[--Pyeong-Won EDA Start-- Not GMV, But Buyer Cnt.] --> O[Issue On Cheap Item?] --> P[Find Coupon For Cheap Item] --> Q[AI Coupon: i3]
+    a[Stock_Discount Page] --> b[Impove This Page]
+    b --> |Variant 1| C[Stock Count] --> f[Not Working, Stable GMV]
+    b --> |Variant 2| d[UI: Consumption rate bar] --> f
+    b --> |Variant 3| e[UI: Consumption rate bar, more than 50%] --> f
+    
+    g[Pyeong-Won's Idea] -->h[economies of scale] --> i[Same Experiment with Home iCon Gate]
+    i --> j[Uplift 10% of Session GMV in Variant 3] --> k[Launch confirmed]
 
 ```
 <br><br>
-* 결국, 이슈는 22년 1월에 고장난 AI 쿠폰이 원인이었고, 1달간 고장난 이슈는 고쳐졌으나,
-  * 해당 기간에 어그러진 데이터를 학습하여 균형 할인율을 잘못맞추던 것이었음.
-  * 마침 그 시점에 담당자가 퇴사하며, 해당 프로덕은 이상이 없는 것으로 인지하고 있었음.
-
-* 해당 사건으로 지마켓은 약 5개월 간 1천억에 가까운 매출을 놓치고 있었고.
-  * 이후 본부별로 특정 KPI 만 바라보기 보다는 매출과 구매자를 동시에 놓고 보는 것으로 재조율 됨.
+* 결국, 타임할인 페이지의 본질은 고객이 할인에 대한 기회가 사라질지 모른다는 것을 자극해야 하고.
+  * 이를 만들어주기 위해서는 트래픽의 규모가 무조건 필요한 것.
+  * 그래서 첫번째 실험을 통해 사라질 뻔 하였던 
+  * 쿠팡의 타임할인 제품은 현재까지도 잘 운영되고 있습니다.
