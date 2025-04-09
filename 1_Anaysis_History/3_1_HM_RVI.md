@@ -6,30 +6,24 @@
   
 * Variant 1 : 만약 유저가 최근에 열람한 카테고리에 가중치를 주어 상품을 재정렬 하면 효과가 좋지 않을까?
 * Variant 2 : 만약 지면 최상단에 아예 최근본상품 모듈을 넣으면 효과가 좋지 않을까? 
-* Variant 3 : 현금성 상품 (문화상품권, 아웃백 쿠폰) 등의 관심유저는 무조건 적 재구매를 하지 않을까? 
+* Variant 3 : 인기 상품 - 문화상품권, 아웃백 쿠폰 등 많은 사람들이 해당 시간에 좋아하면 더 잘팔리지 않을까?
 
 <br><br>
 
 ```mermaid
 flowchart TD
 
-    a[Buyer Conv. Decrease] --> b[buyer Count]
-    b --> |REV Impact ?| F[GMV Not Impact]
-    a --> C[Total UV] --> D[Kakao User] --> E[Log Issue] -->H[Impact to Buyer Log]
-
-    G[Every Data Team for 3Month - Buyer Count EDA] --> i[Channel ?] --> j[Appears throughout]
-    G--> k[ Device ?] --> j[Appears throughout]
-    G--> l[ Royalty ?] --> j[Appears throughout]
-    G--> m[ Category ?] --> j[Appears throughout]
-    G--> r[ Sub Site ?] --> j[Appears throughout]
- 
-    N[--Pyeong-Won EDA Start-- Not GMV, But Buyer Cnt.] --> O[Issue On Cheap Item?] --> P[Find Coupon For Cheap Item] --> Q[AI Coupon: i3]
+    a[홈-할인율 초점의 상품추천 개편] --> b[고객관심사 최대반영]
+    b --> |Variant 1| c[최근 본 상품 반영, 유사 카테고리 가중치] --> f[클릭은 크게 늘어나나, 매출은 저조.]
+    b --> |Variant 2| d[최근 본 상품 반영, Top 1 캐러샐형 최근본상품 모듈] --> g[고객 반응 좋음 - GMV 상승]
+    b --> |Variant 3| e[사이트 내 인기상품 가중치 반영 - 문화상품권, 아웃백 쿠폰 등 ] --> h[고객 반응은 좋으나, 이외 상품은 Best 영역과 비슷.]
 
 ```
 <br><br>
-* 결국, 이슈는 22년 1월에 고장난 AI 쿠폰이 원인이었고, 1달간 고장난 이슈는 고쳐졌으나,
-  * 해당 기간에 어그러진 데이터를 학습하여 균형 할인율을 잘못맞추던 것이었음.
-  * 마침 그 시점에 담당자가 퇴사하며, 해당 프로덕은 이상이 없는 것으로 인지하고 있었음.
 
-* 해당 사건으로 지마켓은 약 5개월 간 1천억에 가까운 매출을 놓치고 있었고.
-  * 이후 본부별로 특정 KPI 만 바라보기 보다는 매출과 구매자를 동시에 놓고 보는 것으로 재조율 됨.
+* 관심상품에 대해 CTR 이 늘어나는 현상은 허수일 수 있음.
+  * 마치 아저씨들이 낚시대를 만지작 거리듯,
+  * 여성분들이 핸드백을 구경하는 것처럼
+  * 클릭(반응)은 많을 수 있으나, 매출로 연결이 어려움.
+
+* Variant 2 의 최상단에 모듈 고정하는 것을 위너로 선정하며 배포.
