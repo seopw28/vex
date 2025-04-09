@@ -6,7 +6,24 @@ import seaborn as sns
 import os
 
 df = pd.read_csv('pokemon_df.csv')
-df.head()
+df.head(10)
 
+
+# %%
+# Filter for Pokemon with secondary typing
+df_2 = df[df['Secondary Typing Flag'] != False]
+df_2.head()
+
+
+#%%
+# Calculate mean stats by typing combination
+stats_df = df_2.groupby(['Primary Typing', 'Secondary Typing']).agg({
+    'Weight (hg)': 'mean',
+    'Height (dm)': 'mean', 
+    'Attack': 'mean',
+    'Defense': 'mean'
+}).reset_index()
+
+stats_df.head()
 
 # %%

@@ -6,7 +6,7 @@ import pprint
 pd.options.display.float_format = "{:.0f}".format
 
 #%% Login
-f = open("test_btc.txt")
+f = open("test_btc.csv")
 lines = f.readlines()
 access = lines[0].strip()
 secret = lines[1].strip()
