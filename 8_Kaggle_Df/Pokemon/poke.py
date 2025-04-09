@@ -18,12 +18,12 @@ df_2.head()
 #%%
 # Calculate mean stats by typing combination
 stats_df = df_2.groupby(['Primary Typing', 'Secondary Typing']).agg({
-    'Weight (hg)': 'mean',
-    'Height (dm)': 'mean', 
-    'Attack': 'mean',
-    'Defense': 'mean'
+    'Weight (hg)': lambda x: round(x.mean(), 2),
+    'Height (dm)': lambda x: round(x.mean(), 2),
+    'Attack': lambda x: round(x.mean(), 2),
+    'Defense': lambda x: round(x.mean(), 2)
 }).reset_index()
 
-stats_df.head()
+stats_df.head(10)
 
 # %%
