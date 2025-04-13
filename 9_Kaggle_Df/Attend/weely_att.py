@@ -5,8 +5,6 @@ import matplotlib.pyplot as plt
 
 # %%
 df = pd.read_csv('Daily_Attendance.csv')
-
-# %%
 df['at_rate'] = round(df['Present'] * 100 / df['Enrolled'], 1)
 df.head()
 
