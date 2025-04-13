@@ -7,7 +7,7 @@ import seaborn as sns
 
 # %%
 # Read and preprocess data
-df = pd.read_csv('covid-19-all.csv')
+df = pd.read_csv('covid.csv')
 df = df.fillna(0)  # Replace NaN values with 0
 
 # Keep original date format for proper time series plotting
@@ -52,7 +52,7 @@ axes[1,1].tick_params(axis='x', rotation=45)
 
 plt.tight_layout()
 # Save the figure as a PNG file with high DPI for better quality
-plt.savefig('covid_beijing.png', dpi=300, bbox_inches='tight')
+plt.savefig('covid_bj.png', dpi=300, bbox_inches='tight')
 plt.show()
 
 # %%
