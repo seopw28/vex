@@ -24,6 +24,6 @@ stats_df = df_2.groupby(['Primary Typing', 'Secondary Typing']).agg({
     'Defense': lambda x: round(x.mean(), 2)
 }).reset_index()
 
-stats_df.head(10)
+stats_df.head(20)
 
 # %%
