@@ -1,5 +1,42 @@
 -- MySQL 코딩테스트 필수 함수 정리
 
+
+
+-- 0. 실전
+
+-- a : 퍼센타일을 매기고 내림차순(DESC)으로 정렬
+ 
+percent_rank()over(order by size_of_colony desc) as p_rnk
+
+-- b : dt to date
+
+-- b : 문자열 형식의 날짜(YYYYMMDD)를 DATE 형식(YYYY-MM-DD)으로 변환
+
+-- 방법 1: STR_TO_DATE 함수 사용
+SELECT STR_TO_DATE('20230101', '%Y%m%d');  -- 결과: 2023-01-01
+
+-- 방법 2: DATE_FORMAT과 STR_TO_DATE 조합
+SELECT DATE_FORMAT(STR_TO_DATE('20230101', '%Y%m%d'), '%Y-%m-%d');  -- 결과: 2023-01-01
+-- 날짜 형식 변환 (dt 컬럼이 datetime 타입일 경우)
+select date_format(dt, '%Y-%m-%d') as dt_2 
+
+-- 다른 방법들:
+-- 1. 날짜만 추출
+select cast(dt as date) as dt_2
+
+-- 2. 다른 포맷으로 변환 (예: 월/일/년)
+select date_format(dt, '%m/%d/%Y') as dt_2
+
+-- 3. 연/월만 추출
+select date_format(dt, '%Y-%m') as year_month
+;
+
+-- 방법 3: CONVERT 함수 사용
+SELECT CONVERT(STR_TO_DATE('20230101', '%Y%m%d'), DATE);  -- 결과: 2023-01-01
+
+;
+
+
 -- 1. 날짜 함수
 -- 날짜 추출 및 포맷팅
 SELECT 

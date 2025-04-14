@@ -7,8 +7,9 @@ WITH event_gaps AS (
     
         user_id,
         event_time,
-        EXTRACT(EPOCH FROM event_time - LAG(event_time) 
-            OVER (PARTITION BY user_id ORDER BY event_time)) as time_gap
+        TIMESTAMPDIFF(SECOND, 
+                LAG(event_time) OVER (PARTITION BY user_id ORDER BY event_time),
+                event_time) as time_gap
 
     FROM user_events
 ),
@@ -45,5 +46,3 @@ SELECT
     CONCAT(user_id, '_', session_id) as session_id
 FROM session_numbers
 ORDER BY user_id, event_time;
-
-;
