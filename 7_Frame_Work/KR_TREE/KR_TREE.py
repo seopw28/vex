@@ -193,6 +193,11 @@ df = generate_kpi_sample_data()
 # Create and visualize KPI tree
 G = create_kpi_tree()
 fig = visualize_kpi_tree(G, df)
+
+# Save the figure as a PNG file
+fig.write_image("kpi_tree.png", width=1200, height=800, scale=2)
+
+# Display the figure
 fig.show()
 
 #%%

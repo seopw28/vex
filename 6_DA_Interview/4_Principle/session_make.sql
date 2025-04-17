@@ -8,7 +8,7 @@ WITH event_gaps AS (
         user_id,
         event_time,
         TIMESTAMPDIFF(SECOND, 
-                LAG(event_time) OVER (PARTITION BY user_id ORDER BY event_time),
+                LAG(event_time, 1) OVER (PARTITION BY user_id ORDER BY event_time),
                 event_time) as time_gap
 
     FROM user_events
